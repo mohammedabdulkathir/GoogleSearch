@@ -1,1 +1,14 @@
-git commit date "Wed Feb 20 14:00 2037 +0100"
+---A---B---C---o---o---o   master
+
+git checkout master
+git checkout A~0
+git add path/to/file
+git commit --date='whenever'
+git tag ,new-commit -m'delete me later'
+git checkout -
+git rebase --onto ,new-commit A
+git tag -d ,new-commit
+
+---A---N                      (was ",new-commit", but we delete the tag)
+        \
+         B'---C'---o---o---o   master
